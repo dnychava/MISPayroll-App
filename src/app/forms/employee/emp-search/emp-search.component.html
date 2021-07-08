@@ -1,0 +1,51 @@
+<div  fxLayout="column wrap" fxLayoutGap="10px" style="padding-bottom: 5px; padding-top: 5px;">
+    <app-alert></app-alert>
+    <mat-accordion>
+        <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Search
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <form [formGroup]="empSearchInfo">
+                <ng-template matStepLabel>Fill emp personal info</ng-template>
+                <!-- 1st Row    START-->
+                <div class="form-row" fxLayout="row wrap" fxLayoutGap="25px" fxLayout.xs="column wrap"
+                    fxLayoutGap.xs="10px">
+                    <mat-form-field fxFlex="calc(20% - 25px)">
+                        <mat-label>Employee ID</mat-label>
+                        <input matInput formControlName="empId">
+                    </mat-form-field>
+                    <mat-form-field fxFlex="calc(20% - 25px)">
+                        <mat-label>First Name</mat-label>
+                        <input matInput formControlName="firstName" >
+                    </mat-form-field>
+                    <mat-form-field fxFlex="calc(20% - 25px)">
+                        <mat-label>Middle Name</mat-label>
+                        <input matInput formControlName="middleName">
+                    </mat-form-field>
+                    <mat-form-field fxFlex="calc(20% - 25px)">
+                        <mat-label>Last Name</mat-label>
+                        <input matInput formControlName="lastName">
+                    </mat-form-field>
+                </div>
+                <div fxLayout="row wrap" fxLayoutGap="25px" fxLayout.xs="column wrap" 
+                fxLayoutGap.xs="10px">
+                <button mat-button mat-raised-button color="primary" (click)="nextStep()">Search</button>
+            </div>
+            </form>
+            
+        </mat-expansion-panel>
+    </mat-accordion>
+    <mat-accordion>
+        <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)">
+            <mat-expansion-panel-header>
+                <mat-panel-title  >
+                    Employee Search Data
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-spinner></mat-spinner>
+        </mat-expansion-panel>
+    </mat-accordion>
+    
+</div>

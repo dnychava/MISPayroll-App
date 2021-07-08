@@ -1,0 +1,15 @@
+<div *ngIf="message" 
+    [ngClass]="{ 'alert': message, 'alert-success': message.type === 'success', 
+    'alert-danger': message.type === 'error' }">
+    
+    <table style="width: 100%;">
+        <tr>
+            <td style="width: 80%;"> {{message.text}} </td>
+            <td style="width: 10%; text-align: right;"> 
+                <button mat-icon-button (click)="closeBtnOnClick()">
+                    <mat-icon class="material-icons-outlined" aria-hidden="false">close</mat-icon>
+                </button>
+            </td>
+        </tr>
+    </table>
+</div>

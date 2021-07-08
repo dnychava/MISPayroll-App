@@ -1,0 +1,268 @@
+<div class="form-container">
+    <app-alert></app-alert>
+    <mat-stepper class="example-stepper" [orientation]="(stepperOrientation | async)!">
+        <mat-step [stepControl]="empPersonalInfo">
+            <form [formGroup]="empPersonalInfo">
+                <ng-template matStepLabel>Fill emp personal info</ng-template>
+                <!-- 1st Row    START-->
+                <div class="form-row" fxLayout="row wrap" fxLayoutGap="25px" fxLayout.xs="column wrap"
+                    fxLayoutGap.xs="10px">
+                    <mat-form-field fxFlex="calc(20% - 25px)">
+                        <mat-label>Designation</mat-label>
+                        <input type="text" matInput formControlName="designation" [matAutocomplete]="desinationAuto">
+                        <mat-autocomplete #desinationAuto="matAutocomplete" [displayWith]="displayDesignation">
+                            <mat-option *ngFor="let option of designationFltrOptions | async" [value]="option">
+                                {{option.name}}
+                            </mat-option>
+                        </mat-autocomplete>
+                        <mat-error>
+                            Designation is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field fxFlex="calc(20% - 25px)">
+                        <mat-label>First Name</mat-label>
+                        <input matInput formControlName="firstName" required>
+                        <mat-error>
+                            First Name is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field fxFlex="calc(20% - 25px)">
+                        <mat-label>Middle Name</mat-label>
+                        <input matInput formControlName="middleName" required>
+                        <mat-error>
+                            Middle Name is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field fxFlex="calc(20% - 25px)">
+                        <mat-label>Last Name</mat-label>
+                        <input matInput formControlName="lastName" required>
+                        <mat-error>
+                            Last Name is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <!-- 1st Row    END-->
+
+                <!-- 2nd Row    START-->
+                <div class="form-row" fxLayout="row wrap" fxLayoutGap="25px" fxLayout.xs="column wrap"
+                    fxLayoutGap.xs="10px">
+                    <mat-form-field fxFlex="calc(20% - 25px)">
+                        <mat-label>Unit Name</mat-label>
+                        <input type="text" matInput formControlName="unit" [matAutocomplete]="unitAuto">
+                        <mat-autocomplete #unitAuto="matAutocomplete" [displayWith]="displayUnit">
+                            <mat-option *ngFor="let option of unitFltrOptions | async" [value]="option">
+                                {{option.name}}
+                            </mat-option>
+                        </mat-autocomplete>
+                        <mat-error>
+                            Unit Name is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                    <div fxFlex="calc(20% - 25px)" fxFlexAlign="center" fxFlexAlign.sm="start" fxFlexAlign.md="start"
+                        fxFlexAlign.xs="start">
+                        <mat-label> Gender : </mat-label>
+                        <mat-radio-group formControlName="gender">
+                            <mat-radio-button checked value="Male">Male</mat-radio-button>
+                            <mat-radio-button value="Female">Female</mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+
+                    <mat-form-field fxFlex="calc(20% - 25px)">
+                        <mat-label>Date Of Birthday</mat-label>
+                        <input matInput [matDatepicker]="dob" [disabled]="true" formControlName="dateOfBirth">
+                        <mat-datepicker-toggle matSuffix [for]="dob"></mat-datepicker-toggle>
+                        <mat-datepicker #dob disabled="false"></mat-datepicker>
+                    </mat-form-field>
+                    <mat-form-field fxFlex="calc(20% - 25px)">
+                        <mat-label>Date Of Joining</mat-label>
+                        <input matInput [matDatepicker]="doj" [disabled]="true" formControlName="dateOfJoining" >
+                        <mat-datepicker-toggle matSuffix [for]="doj"></mat-datepicker-toggle>
+                        <mat-datepicker #doj disabled="false"></mat-datepicker>
+                    </mat-form-field>
+                </div>
+                <!-- 2nd Row    END-->
+                <!-- 3rd Row    START-->
+                <div class="form-row" fxLayout="row wrap" fxLayoutGap="25px" fxLayout.xs="column wrap"
+                    fxLayoutGap.xs="10px">
+                    <mat-form-field fxFlex="calc(20% - 25px)">
+                        <input type="number" matInput placeholder="Adhar Card Number" formControlName="adharNo" 
+                        required>
+                        <mat-error>
+                            Adhar card number is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field fxFlex="calc(20% - 25px)">
+                        <input type="number" matInput placeholder="Mobile Number" formControlName="mobileNo" 
+                        required #mobileNo >
+                        <mat-hint align="start">Max 10 number</mat-hint>
+                        <mat-hint align="end">{{mobileNo.value?.length || 0}}/10</mat-hint>
+                        <mat-error *ngIf="empPersonalInfo.controls.mobileNo.errors?.required">
+                            Mobile number is <strong>required</strong>
+                        </mat-error>
+                        <mat-error *ngIf="empPersonalInfo.controls.mobileNo.errors?.minlength">
+                            Mobile number must be at least 10 digits.
+                        </mat-error>
+                        <mat-error *ngIf="empPersonalInfo.controls.mobileNo.errors?.maxlength">
+                            Mobile number must not be grater than 10 digits.
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field fxFlex="calc(45% - 25px)">
+                        <input type="email" matInput placeholder="Email Id" formControlName="emailId" 
+                        required>
+                        <mat-error *ngIf="empPersonalInfo.controls.emailId.errors?.email">
+                            Please enter a valid email address
+                        </mat-error>
+                        <mat-error *ngIf="empPersonalInfo.controls.emailId.errors?.required">
+                            Email is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <!-- 3rd Row    END-->
+                <!-- 4th Row    START-->
+                <div class="form-row" fxLayout="row wrap" fxLayoutGap="25px" fxLayout.xs="column wrap"
+                    fxLayoutGap.xs="10px">
+                    <div fxFlex="calc(20% - 25px)" fxFlexAlign="center" fxFlexAlign.sm="start" fxFlexAlign.md="start"
+                        fxFlexAlign.xs="start">
+                        <mat-label> Is Handicap ? : </mat-label>
+                        <mat-slide-toggle formControlName="isHandicap" >
+                        </mat-slide-toggle>
+                    </div>
+                </div>
+                <!-- 4th Row    END-->
+                <div fxLayout="row wrap" fxLayoutGap="25px" fxLayout.xs="column wrap" 
+                fxLayoutGap.xs="10px">
+                    <button mat-raised-button matStepperNext color="primary" >Next</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step [stepControl]="empAddress">
+            <ng-template matStepLabel>Fill emp address</ng-template>
+            <form [formGroup]="empAddress">
+                <!-- 4th Row    START-->
+                <div class="form-row" fxLayout="row wrap" fxLayoutGap="25px" fxLayout.xs="column wrap"
+                    fxLayoutGap.xs="10px">
+                    <mat-form-field fxFlex>
+                        <mat-label>Address</mat-label>
+                        <textarea matInput formControlName="address"></textarea>
+                        <mat-error>
+                            Address is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <!-- 4th Row    END-->
+
+                <!-- 5th Row    START-->
+                <div class="form-row" fxLayout="row wrap" fxLayoutGap="25px" fxLayout.xs="column wrap"
+                    fxLayoutGap.xs="10px">
+                    <mat-form-field fxFlex="calc(20% - 25px)">
+                        <input matInput placeholder="Talk" formControlName="talk">
+                        <mat-error>
+                            Talk is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field fxFlex="calc(20% - 25px)">
+                        <input matInput placeholder="Dist" formControlName="dist">
+                        <mat-error>
+                            Dist is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field fxFlex="calc(20% - 25px)">
+                        <input type="number" matInput placeholder="Pin Code" formControlName="pinCode">
+                        <mat-error>
+                            Pin code is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field fxFlex="calc(20% - 25px)">
+                        <input type="number" matInput placeholder="Phone Number" formControlName="phoneNo">
+                        <mat-error>
+                            Phone number is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <!-- 5th Row    END-->
+                <div fxLayout="row wrap" fxLayoutGap="25px" fxLayout.xs="column wrap" 
+                fxLayoutGap.xs="10px">
+                    <button mat-button color="accent" matStepperPrevious>Back</button>
+                    <button mat-raised-button color="primary" matStepperNext>Next</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step [stepControl]="empBank">
+            <form [formGroup]="empBank">
+                <ng-template matStepLabel>Fill emp bank details</ng-template>
+                <!-- 6th Row    START-->
+                <div class="form-row" fxLayout="row wrap" fxLayoutGap="25px" fxLayout.xs="column wrap"
+                    fxLayoutGap.xs="10px">
+                    <mat-form-field fxFlex="calc(15% - 25px)">
+                        <input type="number" matInput placeholder="Account Number" 
+                        formControlName="accountNo">
+                        <mat-error>
+                            Account nummber is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field fxFlex="calc(15% - 25px)">
+                        <input matInput placeholder="Bank Name" formControlName="name">
+                        <mat-error>
+                            Bank Name is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field fxFlex="calc(40% - 25px)">
+                        <input matInput placeholder="IFSC Code" formControlName="ifscCode">
+                        <mat-error>
+                            IFSC code is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <!-- 6th Row    END-->
+                <div fxLayout="row wrap" fxLayoutGap="25px" fxLayout.xs="column wrap" 
+                fxLayoutGap.xs="10px">
+                    <button mat-button color="accent" matStepperPrevious>Back</button>
+                    <button mat-raised-button color="primary" matStepperNext>Next</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step [stepControl]="empPFA" >
+            <form [formGroup]="empPFA">
+                <ng-template matStepLabel>Fill emp PF details</ng-template>
+                <!-- 7th Row    START-->
+                <div class="form-row" fxLayout="row wrap" fxLayoutGap="25px" 
+                fxLayout.xs="column wrap"
+                    fxLayoutGap.xs="10px">
+                    <mat-slide-toggle formControlName="isEPFApplicable" >
+                        Is PF applicable ? 
+                    </mat-slide-toggle>
+                </div>
+                <!-- 7th Row    END-->
+
+                <!-- 8th Row    START-->
+                <div *ngIf="empPFA.controls.isEPFApplicable?.value" class="form-row" fxLayout="row wrap" fxLayoutGap="25px" fxLayout.xs="column wrap"
+                    fxLayoutGap.xs="10px" >
+                    <mat-form-field fxFlex="calc(15% - 25px)">
+                        <input matInput placeholder="PF Member Id" formControlName="memberId">
+                        <mat-error *ngIf="empPFA.controls.memberId.errors?.required">
+                            PF Member Id is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field fxFlex="calc(15% - 25px)">
+                        <input type="number" matInput placeholder="UAN Number" formControlName="uanNo">
+                        <mat-error *ngIf="empPFA.controls.uanNo.errors?.required">
+                            UAN nummber is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field fxFlex="calc(40% - 25px)">
+                        <input matInput placeholder="EPF Name" formControlName="epfName">
+                        <mat-error *ngIf="empPFA.controls.epfName.errors?.required">
+                            EPF Name is <strong>required</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+                <!-- 6th Row    END-->
+                <div fxLayout="row wrap" fxLayoutGap="25px" fxLayout.xs="column wrap" 
+                fxLayoutGap.xs="10px">
+                    <button mat-button color="accent" matStepperPrevious>Back</button>
+                    <button mat-raised-button color="primary" (click)="saveEmp($event)" matStepperNext>Save</button>
+                </div>
+            </form>
+        </mat-step>
+    </mat-stepper>
+</div>

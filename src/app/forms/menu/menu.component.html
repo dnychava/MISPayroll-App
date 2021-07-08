@@ -1,0 +1,52 @@
+<div>
+  <mat-nav-list>
+      <a mat-list-item routerLink="dashboard" href="#">
+         <span><mat-icon>home</mat-icon></span>  
+         <span>  Home</span>
+      </a> 
+  </mat-nav-list>
+  <mat-accordion>
+    <mat-expansion-panel class="mat-accordion">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Forms
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-nav-list>
+        <a mat-list-item routerLink="employee" href="#">Create Employee</a>
+        <a mat-list-item href="#">Distribute Budget</a>
+        <a mat-list-item href="#">Link 3</a>
+        <mat-nav-list>
+          <a mat-list-item href="#">Create User</a>
+          <a mat-list-item href="#">Distribute Budget</a>
+          <a mat-list-item href="#">Link 3</a>
+        </mat-nav-list>
+      </mat-nav-list>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <mat-accordion>
+    <mat-expansion-panel class="mat-accordion">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Data Entry Forms
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-nav-list>
+        <!--<a mat-list-item routerLink="expenditure-search">Expenditure</a>-->
+        <a mat-list-item routerLink="expenditure-upload">Exp. Upload</a>
+      </mat-nav-list>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <mat-accordion>
+    <mat-expansion-panel class="mat-accordion">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Reports
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-nav-list>
+        <a mat-list-item routerLink="fmr-report">FMR</a>
+      </mat-nav-list>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

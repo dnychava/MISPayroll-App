@@ -1,0 +1,24 @@
+<div class="grid-container" >
+    <h1 class="mat-h1">Employee</h1>
+    <mat-card class="dashboard-card" style="background-color:transparent;">
+        <mat-card-header>
+          <mat-card-title>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+            <mat-tab-group>
+                    <mat-tab label="Search"> 
+                      <ng-template matTabContent>
+                        <emp-search></emp-search> 
+                      </ng-template>
+                    </mat-tab>
+                    <mat-tab label="Create">
+                      <ng-template matTabContent>
+                        <emp-add></emp-add>
+                      </ng-template>  
+                    </mat-tab>
+            </mat-tab-group>
+        </mat-card-content>
+      </mat-card>
+</div>
+

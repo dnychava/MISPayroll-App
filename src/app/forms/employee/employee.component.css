@@ -1,0 +1,9 @@
+.grid-container {
+    margin: 20px;
+  }
+  
+  .dashboard-card {
+    position: absolute;
+    left: 30px;
+    right: 30px;
+  }
