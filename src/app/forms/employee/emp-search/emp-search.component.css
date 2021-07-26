@@ -15,3 +15,37 @@
 .example-headers-align .mat-form-field + .mat-form-field {
   margin-left: 8px;
 }
+
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td, th {
+  width: 14.5%;
+}
+
+tr.table-element-row:not(.example-expanded-row):hover {
+  background: rgb(241, 240, 240);
+}
+
+.loading-shade {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 10px;
+  right: 0;
+  background: rgba(0, 0, 0, 0.15);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cursorsymbol{
+  cursor: pointer;
+}

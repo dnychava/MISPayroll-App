@@ -20,6 +20,8 @@ import {MainInterceptor} from './interceptors/main.interceptor';
 import { AuthService } from './services/auth.service'
 import { EmployeeService } from './services/employee/employee.service';
 import { AlertService } from './services/alert/alert.service'
+import { ConfirmDialogService } from './services/dialog/ConfirmDialogService';
+
 //User created module
 import { AllmaterialcompModule } from './core/allmaterialcomp.module'
 import { AppRoutingModule } from './app-routing.module';
@@ -38,6 +40,8 @@ import { EmpSearchComponent } from './forms/employee/emp-search/emp-search.compo
 
 import { AlertComponent } from './comman.comp/alert/alert.component';
 import { AppConstants } from './core/AppConstants';
+import { ConfirmDialogComponent } from './comman.comp/confirmation/confirm-dialog.component';
+
 
 
 
@@ -52,7 +56,8 @@ import { AppConstants } from './core/AppConstants';
     EmployeeComponent,
     EmpAddComponent,
     EmpSearchComponent,
-    AlertComponent
+    AlertComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +68,7 @@ import { AppConstants } from './core/AppConstants';
     LayoutModule,FlexLayoutModule
   ],
   providers: [
-    AuthService, EmployeeService, AlertService,
+    AuthService, EmployeeService, AlertService, ConfirmDialogService,
     { provide: HTTP_INTERCEPTORS, useClass: MainInterceptor, multi: true },
 
     { provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: { useUtc: true } },

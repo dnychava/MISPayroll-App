@@ -24,6 +24,11 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+import {OverlayModule} from '@angular/cdk/overlay';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 
  
@@ -36,7 +41,9 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatGridListModule, MatSnackBarModule, MatMenuModule,
     MatTabsModule,MatRadioModule, MatDatepickerModule,
     MatNativeDateModule,MatSlideToggleModule,MatStepperModule,
-    MatAutocompleteModule,MatMomentDateModule,MatProgressSpinnerModule
+    MatAutocompleteModule,MatMomentDateModule,MatProgressSpinnerModule,
+    MatTableModule,MatSortModule,OverlayModule,
+    MatPaginatorModule,MatProgressBarModule
 
   ],
   exports: [
@@ -47,7 +54,10 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
       MatGridListModule, MatSnackBarModule, MatMenuModule,
       MatTabsModule,MatRadioModule, MatDatepickerModule,
       MatNativeDateModule,MatSlideToggleModule,MatStepperModule,
-      MatAutocompleteModule,MatMomentDateModule,MatProgressSpinnerModule
+      MatAutocompleteModule,MatMomentDateModule,MatProgressSpinnerModule,
+      MatTableModule,MatSortModule,OverlayModule,
+      MatPaginatorModule,MatProgressBarModule
+    
       
   ],
   declarations: []
